@@ -15,7 +15,7 @@ import ChatbotWidget from "@/components/chatbot-widget";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
       <HeroSection />
       <AboutSection />
