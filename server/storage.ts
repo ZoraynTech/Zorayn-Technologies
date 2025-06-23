@@ -12,6 +12,8 @@ import {
   type JobApplication,
   type InsertJobApplication
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -26,6 +28,62 @@ export interface IStorage {
   
   createJobApplication(application: InsertJobApplication): Promise<JobApplication>;
   getJobApplications(): Promise<JobApplication[]>;
+}
+
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
+    const [contactSubmission] = await db
+      .insert(contactSubmissions)
+      .values(submission)
+      .returning();
+    return contactSubmission;
+  }
+
+  async getContactSubmissions(): Promise<ContactSubmission[]> {
+    return await db.select().from(contactSubmissions).orderBy(contactSubmissions.createdAt);
+  }
+
+  async getTeamMembers(): Promise<TeamMember[]> {
+    return await db.select().from(teamMembers).orderBy(teamMembers.order);
+  }
+
+  async createTeamMember(member: InsertTeamMember): Promise<TeamMember> {
+    const [teamMember] = await db
+      .insert(teamMembers)
+      .values(member)
+      .returning();
+    return teamMember;
+  }
+
+  async createJobApplication(application: InsertJobApplication): Promise<JobApplication> {
+    const [jobApplication] = await db
+      .insert(jobApplications)
+      .values(application)
+      .returning();
+    return jobApplication;
+  }
+
+  async getJobApplications(): Promise<JobApplication[]> {
+    return await db.select().from(jobApplications).orderBy(jobApplications.createdAt);
+  }
 }
 
 export class MemStorage implements IStorage {
@@ -189,4 +247,67 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Initialize team members in database
+async function initializeTeamMembers() {
+  try {
+    const existingTeam = await db.select().from(teamMembers);
+    if (existingTeam.length === 0) {
+      const initialTeam: InsertTeamMember[] = [
+        {
+          name: "Nicholas Koranteng",
+          position: "CEO",
+          bio: "Visionary leader with over 15 years in technology and business strategy.",
+          imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+          linkedinUrl: "#",
+          twitterUrl: "#",
+          order: 1
+        },
+        {
+          name: "Loretta Abban",
+          position: "Legal Head",
+          bio: "Expert in technology law and compliance with international experience.",
+          imageUrl: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+          linkedinUrl: "#",
+          twitterUrl: "#",
+          order: 2
+        },
+        {
+          name: "Kweku Hanson",
+          position: "IT Director",
+          bio: "Technology architect specializing in cloud infrastructure and DevOps.",
+          imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+          linkedinUrl: "#",
+          githubUrl: "#",
+          order: 3
+        },
+        {
+          name: "Hassa Moavia",
+          position: "Deputy IT Director",
+          bio: "Full-stack developer and systems integration specialist.",
+          imageUrl: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+          linkedinUrl: "#",
+          githubUrl: "#",
+          order: 4
+        },
+        {
+          name: "George Attipoe",
+          position: "Director Branding",
+          bio: "Creative director with expertise in brand strategy and digital marketing.",
+          imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400",
+          linkedinUrl: "#",
+          twitterUrl: "#",
+          order: 5
+        }
+      ];
+
+      await db.insert(teamMembers).values(initialTeam);
+    }
+  } catch (error) {
+    console.error("Error initializing team members:", error);
+  }
+}
+
+export const storage = new DatabaseStorage();
+
+// Initialize team data
+initializeTeamMembers();
