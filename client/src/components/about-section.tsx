@@ -79,7 +79,7 @@ export default function AboutSection() {
                 <div className="text-gray-600 text-sm">Client Satisfaction</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold gradient-text mb-2">150+</div>
+                <div className="text-3xl font-bold gradient-text mb-2">10+</div>
                 <div className="text-gray-600 text-sm">Expert Team Members</div>
               </div>
             </div>

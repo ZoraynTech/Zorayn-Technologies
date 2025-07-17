@@ -26,7 +26,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Sparkles className="w-4 h-4 text-purple-600" />
-            <span className="text-sm font-medium text-purple-800">Trusted by 500+ companies worldwide</span>
+            <span className="text-sm font-medium text-purple-800">Trusted by 25+ companies worldwide</span>
           </motion.div>
 
           {/* Main heading */}
@@ -78,8 +78,8 @@ export default function HeroSection() {
             transition={{ duration: 1, delay: 0.9 }}
           >
             {[
-              { number: '500+', label: 'Projects Delivered' },
-              { number: '50+', label: 'Countries Served' },
+              { number: '25+', label: 'Projects Delivered' },
+              { number: '5+', label: 'Countries Served' },
               { number: '99.9%', label: 'Uptime Guarantee' },
               { number: '24/7', label: 'Global Support' }
             ].map((stat, index) => (

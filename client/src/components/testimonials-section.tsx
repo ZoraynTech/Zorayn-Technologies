@@ -5,8 +5,8 @@ const testimonials = [
   {
     id: 1,
     content: "Zorayn Technologies transformed our digital infrastructure completely. Their team's expertise and dedication made the entire process seamless.",
-    author: "Sarah Johnson",
-    position: "CEO, TechCorp",
+    author: "Prince Boadi",
+    position: "CEO, Swift International",
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
   },
   {
@@ -19,8 +19,8 @@ const testimonials = [
   {
     id: 3,
     content: "Professional, reliable, and results-driven. Zorayn exceeded our expectations in every aspect of the project.",
-    author: "James Wilson",
-    position: "Founder, StartupHub",
+    author: "Tamimu Adamu",
+    position: "Founder, Nexus Mundi",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"
   }
 ];

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "Ecobank",
+  "Eprocess",
   "Wirepick", 
   "Bola Ray",
   "WeiWei Logistics",
@@ -9,10 +9,10 @@ const clients = [
   "Frandy",
   "REL Foundation",
   "Criptoma",
-  "TechCorp",
-  "DataFlow",
-  "CloudSync",
-  "InnovateLab"
+  "NayaasAutos",
+  "Swift International",
+  "Nexus Mundi",
+  "EastMart Global"
 ];
 
 export default function ClientsSection() {
@@ -103,9 +103,9 @@ export default function ClientsSection() {
           viewport={{ once: true }}
         >
           {[
-            { number: '500+', label: 'Happy Clients' },
+            { number: '25+', label: 'Happy Clients' },
             { number: '98%', label: 'Satisfaction Rate' },
-            { number: '50+', label: 'Countries Served' },
+            { number: '5+', label: 'Countries Served' },
             { number: '24/7', label: 'Support Available' }
           ].map((stat, index) => (
             <motion.div 

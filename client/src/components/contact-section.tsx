@@ -8,7 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Mail, Phone, MapPin, Send, Clock, Users } from "lucide-react";
 import { insertContactSubmissionSchema } from "@shared/schema";
 import type { InsertContactSubmission } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
+import { submitContactForm } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
@@ -29,10 +29,10 @@ export default function ContactSection() {
 
   const mutation = useMutation({
     mutationFn: async (data: InsertContactSubmission) => {
-      return apiRequest("POST", "/api/contact", data);
+      return submitContactForm(data);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["/api/contact"] });
+      queryClient.invalidateQueries({ queryKey: ["contact_submissions"] });
       form.reset();
       toast({
         title: "Message sent successfully!",
@@ -141,7 +141,7 @@ export default function ContactSection() {
                     <Input
                       type="tel"
                       {...form.register("phone")}
-                      placeholder="+233 277 731 103"
+                      placeholder="+1 (651) 230-8219"
                       className="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 bg-white/50"
                     />
                   </div>
@@ -224,7 +224,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Call Us</h4>
-                    <p className="text-gray-600 text-sm">+233 277 731 103</p>
+                    <p className="text-gray-600 text-sm">+1 (651) 230-8219</p>
                   </div>
                 </div>
                 
