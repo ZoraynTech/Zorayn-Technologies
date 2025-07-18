@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Twitter, Linkedin, Github, Instagram, Facebook } from "lucide-react";
-import logoImage from "@assets/logo_transparent_1750680692652.png";
 
 const socialLinks = [
   { icon: Twitter, href: "https://twitter.com/zorayntechnologies", label: "Twitter" },
@@ -47,7 +46,6 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <div className="flex items-center mb-6">
-              <img src={logoImage} alt="Zorayn Technologies Logo" className="h-8 w-auto mr-3" />
               <span className="text-2xl font-bold">Zorayn Technologies</span>
             </div>
             <p className="text-gray-300 leading-relaxed mb-6 max-w-md">

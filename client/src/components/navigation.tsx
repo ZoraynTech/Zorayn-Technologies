@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
-import logoImage from "@assets/logo_transparent_1750680692652.png";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,8 +39,7 @@ export default function Navigation() {
             className="flex items-center"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
-          >
-            <img src={logoImage} alt="Zorayn Technologies Logo" className="h-10 w-auto" />
+          > 
             <span className="ml-3 text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               Zorayn Technologies
             </span>
