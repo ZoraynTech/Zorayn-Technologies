@@ -7,7 +7,6 @@ import WhyChooseSection from "@/components/why-choose-section";
 import CaseStudiesSection from "@/components/case-studies-section";
 import TeamSection from "@/components/team-section";
 import TestimonialsSection from "@/components/testimonials-section";
-import CtaSection from "@/components/cta-section";
 import ContactSection from "@/components/contact-section";
 import CareersSection from "@/components/careers-section";
 import Footer from "@/components/footer";
@@ -25,7 +24,6 @@ export default function Home() {
       <CaseStudiesSection />
       <TeamSection />
       <TestimonialsSection />
-      <CtaSection />
       <ContactSection />
       <CareersSection />
       <Footer />
