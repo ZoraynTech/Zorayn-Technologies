@@ -234,7 +234,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900 mb-1">Visit Us</h4>
-                    <p className="text-gray-600 text-sm">Accra, Ghana</p>
+                    <p className="text-gray-600 text-sm">Middletown, DE 19709, USA</p>
                   </div>
                 </div>
               </div>
