@@ -10,7 +10,6 @@ import TestimonialsSection from "@/components/testimonials-section";
 import ContactSection from "@/components/contact-section";
 import CareersSection from "@/components/careers-section";
 import Footer from "@/components/footer";
-import ChatbotWidget from "@/components/chatbot-widget";
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
       <ContactSection />
       <CareersSection />
       <Footer />
-      <ChatbotWidget />
     </div>
   );
 }
