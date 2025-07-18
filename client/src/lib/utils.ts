@@ -3,7 +3,8 @@ import { supabase } from "@/supabase";
 export async function fetchTeamMembers() {
   const { data, error } = await supabase
     .from('team_members')
-    .select('*');
+    .select('*')
+    .order('order', { ascending: true }); // 🔥 sort by ID
 
   if (error) {
     console.error('Fetch error:', error.message);
